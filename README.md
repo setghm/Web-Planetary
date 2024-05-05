@@ -17,7 +17,11 @@ Many of the resources were retrieved from the following websites:
 - Icons and other images:
     - [Free SVG](https://freesvg.org/)
 
-## Legal warning
+## Powered by
+
+[<img src="https://babylonjs.com/assets/img/BabylonIdentity.svg" alt="Babylon.js" width="150px">](https://babylonjs.com/)
+
+## Legal note
 
 Some images and 3D models may be subject to copyright, this project knowingly uses them exclusively for educational purposes.
 
