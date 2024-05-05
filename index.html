@@ -1,0 +1,68 @@
+<!--
+ -	Los Planetas - Visor de planetas en 3D
+ -	Set HM (C) 2023.
+ -	Todos los derechos reservados.
+ -
+ -	Este archivo forma parte del proyecto "Los Planetas", un visor de planetas en 3D creado con fines educativos.
+ -	El objetivo de este proyecto es proporcionar una herramienta interactiva que permita a los usuarios explorar
+ -	y aprender sobre los distintos planetas de nuestro sistema solar.
+ -
+ -	En algunos apartados de este código, se pueden utilizar recursos y códigos que son de autoría ajena.
+ -	Estos recursos han sido utilizados únicamente con fines ilustrativos y con el propósito de mejorar la
+ -	experiencia de aprendizaje para los usuarios.
+ -
+ -	Queda estrictamente prohibida la reproducción, distribución o utilización no autorizada de este contenido
+ -	sin el permiso expreso del autor, Set HM.
+ -
+ -	Para más información sobre el proyecto "Los Planetas" o para solicitar permisos de uso, por favor
+ -	comunicarse con Set HM a través del siguiente correo electrónico: [setghm@gmail.com]
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=none,default-scale=1,width=device-width">
+		<title>Planetas</title>
+		<link type="image/x-icon" rel="shortcuticon" href="favicon.ico">
+		<link type="text/css" rel="stylesheet" href="index.css">
+		<link type="text/css" rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="routes">
+			<a href="/exoplanets.html">Exoplanetas</a>
+			<a href="/our-solar-system.html">Nuestro sistema solar</a>
+			<a href="/space-missions.html">Misiones espaciales</a>
+		</div>
+		<div class="content">
+			<div class="left">
+				<h1 class="main">LOS PLANETAS</h1>
+				<p id="curious-fact">Explorar y conocer planetas promueve la curiosidad científica y el avance de la humanidad.</p>
+				<button id="explore" class="explore">Explorar &#8250;&#8250;</button>
+			</div>
+			<div class="right">
+				<canvas id="planet-render" class="grab"></canvas>
+			</div>
+		</div>
+		<div class="footer">
+			<span>Set HM - 2023</span>
+		</div>
+
+		<script type="text/javascript" src="lib/babylon.js"></script>
+		<script type="text/javascript" src="PLANETS.js"></script>
+		<script type="text/javascript" src="planets3d.js"></script>
+		<script type="text/javascript">
+			async function start() {
+				await planetCreate(PLANETS['earth'])
+				planetStartRotation()
+			}
+
+			const btnExplore = document.querySelector('#explore')
+			btnExplore.addEventListener('click', () => {
+				window.location = "planet-viewer.html"
+			})
+
+			start()
+		</script>
+	</body>
+</html>

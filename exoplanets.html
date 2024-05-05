@@ -1,0 +1,102 @@
+<!--
+ -	Los Planetas - Visor de planetas en 3D
+ -	Set HM (C) 2023.
+ -	Todos los derechos reservados.
+ -
+ -	Este archivo forma parte del proyecto "Los Planetas", un visor de planetas en 3D creado con fines educativos.
+ -	El objetivo de este proyecto es proporcionar una herramienta interactiva que permita a los usuarios explorar
+ -	y aprender sobre los distintos planetas de nuestro sistema solar.
+ -
+ -	En algunos apartados de este código, se pueden utilizar recursos y códigos que son de autoría ajena.
+ -	Estos recursos han sido utilizados únicamente con fines ilustrativos y con el propósito de mejorar la
+ -	experiencia de aprendizaje para los usuarios.
+ -
+ -	Queda estrictamente prohibida la reproducción, distribución o utilización no autorizada de este contenido
+ -	sin el permiso expreso del autor, Set HM.
+ -
+ -	Para más información sobre el proyecto "Los Planetas" o para solicitar permisos de uso, por favor
+ -	comunicarse con Set HM a través del siguiente correo electrónico: [setghm@gmail.com]
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=none,default-scale=1,width=device-width">
+		<title>Planetas | Exoplanetas</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<link type="text/css" rel="stylesheet" href="exoplanets.css">
+	</head>
+	<body>
+		<div class="routes">
+			<a href="/">Inicio</a>
+			<a href="/our-solar-system.html">Nuestro sistema solar</a>
+			<a href="/space-missions.html">Misiones espaciales</a>
+		</div>
+		<div class="main">
+			<div class="index section">
+				<h1>Exoplanetas</h1>
+				<div class="description">
+					Más allá de nuestro sistema solar, en las profundidades del espacio, se ocultan los exoplanetas, mundos enigmáticos que orbitan estrellas lejanas. ¿Hay otros hogares cósmicos esperando ser descubiertos? La búsqueda de vida extraterrestre continúa...
+				</div>
+				<div class="content">
+					<button id="topic-1">¿Qué son?</button>
+					<button id="topic-2">Métodos de detección</button>
+				</div>
+			</div>
+			<div class="section topic-1">
+				<h1>¿Qué son?</h1>
+				<div class="description">Los exoplanetas son planetas que orbitan estrellas distintas a nuestro Sol. Son mundos distantes fuera de nuestro sistema solar que pueden tener una amplia gama de características y propiedades, y representan una ventana hacia la diversidad y posibilidad de otros mundos en el universo.</div>
+				<div class="card">
+					<img src="img/exoplanet_discover.jpg">
+					<div class="info">
+						<h3>Historia del descubrimiento</h3>
+						<p>
+							El hito histórico del descubrimiento del primer exoplaneta confirmado ocurrió en 1995 en el Observatorio de Haute-Provence, Francia. Los astrónomos suizos Michel Mayor y Didier Queloz utilizaron el método de la velocidad radial para detectar a 51 Pegasi b, un gigante gaseoso que orbita alrededor de la estrella 51 Pegasi. Este descubrimiento revolucionario abrió las puertas a la búsqueda y el estudio de exoplanetas en todo el universo.
+						</p>
+						<p>
+							Desde entonces, numerosos investigadores y científicos de todo el mundo han contribuido a este campo en rápido crecimiento, utilizando diversas técnicas de detección y colaborando en proyectos internacionales como el Telescopio Espacial Kepler y el Satélite de Sondeo de Exoplanetas en Tránsito (TESS).
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="section topic-2">
+				<h1>Métodos de detección</h1>
+				<div class="cards">
+					<div class="item">
+						<h3>Tránsito</h3>
+						<div>Se observa la disminución periódica en el brillo de una estrella cuando un exoplaneta pasa frente a ella, bloqueando parcialmente su luz. Esta disminución en el brillo puede medirse y utilizarse para inferir la presencia y características del exoplaneta.</div>
+						<img src="img/exoplanet_dm1.jpg">
+					</div>
+					<div class="item">
+						<h3>Velocidad radial</h3>
+						<div>Se monitorea el "bamboleo" de una estrella causado por la atracción gravitacional del exoplaneta en órbita. Este efecto induce cambios en la luz emitida por la estrella, lo que permite determinar la presencia y propiedades del exoplaneta.</div>
+						<img src="img/exoplanet_dm2.jpg">
+					</div>
+					<div class="item">
+						<h3>Microlente gravitacional</h3>
+						<div>Se aprovecha el fenómeno de la curvatura de la luz causada por la gravedad de una estrella en primer plano. Si un exoplaneta pasa cerca de esta estrella, su gravedad actúa como una lente que amplifica y distorsiona la luz de una estrella distante. Este efecto fugaz puede ser detectado y utilizado para identificar la presencia de un exoplaneta.</div>
+						<img src="img/exoplanet_dm3.jpg">
+					</div>
+					<div class="item">
+						<h3>Imágenes directas</h3>
+						<div>Se capturan imágenes directas de los exoplanetas y se detecta su luz separada de la estrella anfitriona. Este método es desafiante debido a la diferencia de brillo entre la estrella y el exoplaneta, pero ha permitido la observación directa de algunos exoplanetas gigantes y distantes.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			const divMain = document.querySelector('.main')
+			const btnTopic1 = document.getElementById('topic-1')
+			const btnTopic2 = document.getElementById('topic-2')
+
+			btnTopic1.addEventListener('click', () => scrollToTopic(1))
+			btnTopic2.addEventListener('click', () => scrollToTopic(2))
+
+			function scrollToTopic(n) {
+				divMain.scrollTop = divMain.clientHeight * n
+			}
+		</script>
+	</body>
+</html>

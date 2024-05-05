@@ -1,0 +1,145 @@
+/*
+ *	Los Planetas - Visor de planetas en 3D
+ *	Set HM (C) 2023.
+ *	Todos los derechos reservados.
+ *
+ *	Este archivo forma parte del proyecto "Los Planetas", un visor de planetas en 3D creado con fines educativos.
+ *	El objetivo de este proyecto es proporcionar una herramienta interactiva que permita a los usuarios explorar
+ *	y aprender sobre los distintos planetas de nuestro sistema solar.
+ *
+ *	En algunos apartados de este código, se pueden utilizar recursos y códigos que son de autoría ajena.
+ *	Estos recursos han sido utilizados únicamente con fines ilustrativos y con el propósito de mejorar la
+ *	experiencia de aprendizaje para los usuarios.
+ *
+ *	Queda estrictamente prohibida la reproducción, distribución o utilización no autorizada de este contenido
+ *	sin el permiso expreso del autor, Set HM.
+ *
+ *	Para más información sobre el proyecto "Los Planetas" o para solicitar permisos de uso, por favor
+ *	comunicarse con Set HM a través del siguiente correo electrónico: [setghm@gmail.com]
+ */
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background-image: url(img/sun.avif);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: right;
+	background-color: black;
+	background-attachment: fixed;
+}
+
+body::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: -1;
+}
+
+.routes {
+	position: fixed;
+	z-index: 1;
+}
+
+.main {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10%;
+	position: relative;
+}
+
+.main h1 {
+	font-size: 42pt;
+	letter-spacing: 5pt;
+	text-shadow: 0 0 12px var(--white-five);
+}
+
+.main .description {
+	font-size: 14pt;
+	max-width: 650px;
+	text-align: center;
+}
+
+button#start {
+	background: none;
+	border: none;
+	padding: 20px;
+	color: inherit;
+	font-size: 12pt;
+	position: absolute;
+	bottom: 0;
+}
+
+button#start:hover {
+	text-shadow: 0 0 12px var(--white-five);
+}
+
+.planets {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5%;
+
+	background-image: url(img/stars_milky_way.jpg);
+	background-position: center;
+	background-size: center;
+	background-attachment: fixed;
+	overflow: hidden;
+}
+
+.planets > * {
+/*  	border: 1px solid purple; */
+}
+
+.planets .text {
+	padding: 0 10%;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.planets .text h1 {
+	font-size: 32pt;
+	letter-spacing: 4pt;
+}
+
+.planets .text .description {
+	font-size: 14pt;
+	text-align: justify;
+}
+
+.planets .container {
+	width: 100%;
+	display: flex;
+	padding: 20px;
+	gap: 20px;
+	overflow: auto;
+}
+
+.planets .container .planet {
+	width: max-content;
+	padding: 10px 30px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	background-color: black;
+	cursor: pointer;
+}
+
+.planets .container .planet img {
+	width: 60px;
+	height: 60px;
+	object-fit: contain;
+}

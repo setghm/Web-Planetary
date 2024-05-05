@@ -1,0 +1,295 @@
+/*
+ *	Los Planetas - Visor de planetas en 3D
+ *	Set HM (C) 2023.
+ *	Todos los derechos reservados.
+ *
+ *	Este archivo forma parte del proyecto "Los Planetas", un visor de planetas en 3D creado con fines educativos.
+ *	El objetivo de este proyecto es proporcionar una herramienta interactiva que permita a los usuarios explorar
+ *	y aprender sobre los distintos planetas de nuestro sistema solar.
+ *
+ *	En algunos apartados de este código, se pueden utilizar recursos y códigos que son de autoría ajena.
+ *	Estos recursos han sido utilizados únicamente con fines ilustrativos y con el propósito de mejorar la
+ *	experiencia de aprendizaje para los usuarios.
+ *
+ *	Queda estrictamente prohibida la reproducción, distribución o utilización no autorizada de este contenido
+ *	sin el permiso expreso del autor, Set HM.
+ *
+ *	Para más información sobre el proyecto "Los Planetas" o para solicitar permisos de uso, por favor
+ *	comunicarse con Set HM a través del siguiente correo electrónico: [setghm@gmail.com]
+ */
+
+body {
+	height: 100vh;
+	background: black;
+	display: flex;
+	flex-direction: column;
+}
+
+.dark {
+	position: fixed;
+	left: 0;
+	top: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -1;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+
+video#bg {
+	position: fixed;
+	left: 0;
+	top: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -2;
+	object-fit: cover;
+	object-position: center;
+}
+
+.main {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	overflow: hidden;
+}
+
+.main .start-page {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	position: relative;
+	overflow: hidden;
+
+	animation: fade-in-top 500ms ease-in;
+}
+
+.start-page h1 {
+	font-size: 42pt;
+	letter-spacing: 5pt;
+}
+
+.start-page .description {
+	width: 60%;
+	font-size: 14pt;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.start-page .missions-list {
+	width: 80%;
+	padding: 10px 20px;
+	position: absolute;
+	bottom: 20px;
+	overflow: auto;
+	display: flex;
+	flex-shrink: 0;
+	gap: 20px;
+	justify-content: center;
+}
+
+.missions-list .mission {
+	padding: 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	min-width: 150px;
+	text-align: center;
+
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+button.icon {
+	height: 32px;
+	aspect-ratio: 1 / 1;
+	border: none;
+	background: none;
+	background-position: center;
+	background-origin: content-box;
+	background-size: contain;
+	background-repeat: no-repeat;
+	padding: 6px;
+}
+
+button.icon:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+button.icon:active {
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+.mission-view {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	padding-bottom: 20px;
+	gap: 20px;
+
+	animation: fade-in-left 500ms ease-in;
+}
+
+button#back {
+	background-image: url(img/icon-left-arrow.svg);
+	margin-right: 10px;
+}
+
+.scrollable {
+	height: 100%;
+	overflow: auto;
+}
+
+.mission-view > div {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.mission-view > div > div {
+	border-radius: 5px;
+	background: linear-gradient(#000a, #0007);
+	overflow: hidden;
+	padding: 15px 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.mission-view > div > div > h4 {
+	margin-bottom: 10px;
+	font-size: 16pt;
+}
+
+.mission-intro > h2 {
+	font-size: 24pt;
+	letter-spacing: 1.5pt;
+	height: max-content;
+}
+
+.mission-intro .images {
+	height: 100%;
+}
+
+.mission-info > * {
+	height: 100%;
+}
+
+div.info {
+	gap: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+div.field {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+div.field.column {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+div.highlight {
+	background-color: rgba(255, 255, 255, 0.05);
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+div#images {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 10px;
+	row-gap: 10px;
+}
+
+div#images img {
+	border-radius: 5px;
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	cursor: pointer;
+}
+
+div#results {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+div#goal {
+	text-align: justify;
+	padding-right: 20px;
+}
+
+#image-viewer {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	overflow: hidden;
+}
+
+#image-viewer #close {
+	background-image: url(img/icon-exit.svg);
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+#image-viewer img {
+	width: 100%;
+	height: 80%;
+	object-fit: contain;
+}
+
+#image-viewer #credits {
+	width: 80%;
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+}
+
+#image-viewer #credits #source a {
+	text-decoration: none;
+	color: white;
+}
+
+/* =============== ANIMATIONS =============== */
+
+@keyframes fade-in-top {
+	from {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes fade-in-left {
+	from {
+		transform: translateX(50px);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}

@@ -1,0 +1,95 @@
+<!--
+ -	Los Planetas - Visor de planetas en 3D
+ -	Set HM (C) 2023.
+ -	Todos los derechos reservados.
+ -
+ -	Este archivo forma parte del proyecto "Los Planetas", un visor de planetas en 3D creado con fines educativos.
+ -	El objetivo de este proyecto es proporcionar una herramienta interactiva que permita a los usuarios explorar
+ -	y aprender sobre los distintos planetas de nuestro sistema solar.
+ -
+ -	En algunos apartados de este código, se pueden utilizar recursos y códigos que son de autoría ajena.
+ -	Estos recursos han sido utilizados únicamente con fines ilustrativos y con el propósito de mejorar la
+ -	experiencia de aprendizaje para los usuarios.
+ -
+ -	Queda estrictamente prohibida la reproducción, distribución o utilización no autorizada de este contenido
+ -	sin el permiso expreso del autor, Set HM.
+ -
+ -	Para más información sobre el proyecto "Los Planetas" o para solicitar permisos de uso, por favor
+ -	comunicarse con Set HM a través del siguiente correo electrónico: [setghm@gmail.com]
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<title>Planetas | Nuestro sistema solar</title>
+		<link type="image/x-icon" rel="shortcuticon" href="favicon.ico">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="our-solar-system.css">
+	</head>
+	<body>
+		<div class="routes">
+			<a href="/">Inicio</a>
+			<a href="/exoplanets.html">Exoplanetas</a>
+			<a href="/space-missions.html">Misiones espaciales</a>
+		</div>
+		<div class="main">
+			<h1>Nuestro sistema solar</h1>
+			<div class="description">
+				En los confines del espacio, un sistema enigmático aguarda. Un sol radiante ilumina ocho mundos misteriosos, mientras asteroides errantes y cometas helados trazan senderos ocultos... ¿Qué secretos se esconden más allá? Descubre la fascinación cósmica del sistema solar...
+			</div>
+			<button id="start">Explorar<br>&#x2304;</button>
+		</div>
+		<div class="planets">
+			<div class="text">
+				<h1>Planetas del sistema solar</h1>
+				<div class="description">
+					Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno. Un grupo de planetas fascinantes con características únicas: volcanes en Marte, anillos en Saturno y tormentas gigantes en Júpiter. Un cosmos por explorar...
+				</div>
+			</div>
+			<div class="container"></div>
+		</div>
+
+		<script type="text/javascript" src="PLANETS.js"></script>
+		<script type="text/javascript" src="utilities.js"></script>
+		<script type="text/javascript">
+			const btnStart = document.querySelector('button#start')
+
+			btnStart.addEventListener('click', () => {
+				scroll({
+					top: document.body.clientHeight,
+					behavior: 'smooth'
+				})
+			})
+
+			const divContainer = document.querySelector('.container')
+			const planets = [ 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune' ]
+
+			function addPlanetCard(key, planet) {
+				let htmlString =
+					`<div class="planet">
+						<h3>${planet.name}</h3>
+						<img src="${planet.icon}">
+						<button class="explore">Explorar</button>
+					</div>`
+				let div = HTMLfromString(htmlString)
+
+				div.addEventListener('click', () => {
+					window.location = `planet-viewer.html?name=${key}`
+				})
+
+				divContainer.appendChild(div)
+			}
+
+			function addPlanets() {
+				planets.forEach(planetKey => {
+					const planet = PLANETS[planetKey]
+					addPlanetCard(planetKey, planet)
+				})
+			}
+
+			addPlanets()
+		</script>
+	</body>
+</html>

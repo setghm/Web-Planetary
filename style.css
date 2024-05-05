@@ -1,0 +1,145 @@
+/*
+ *	Los Planetas - Visor de planetas en 3D
+ *	Set HM (C) 2023.
+ *	Todos los derechos reservados.
+ *
+ *	Este archivo forma parte del proyecto "Los Planetas", un visor de planetas en 3D creado con fines educativos.
+ *	El objetivo de este proyecto es proporcionar una herramienta interactiva que permita a los usuarios explorar
+ *	y aprender sobre los distintos planetas de nuestro sistema solar.
+ *
+ *	En algunos apartados de este código, se pueden utilizar recursos y códigos que son de autoría ajena.
+ *	Estos recursos han sido utilizados únicamente con fines ilustrativos y con el propósito de mejorar la
+ *	experiencia de aprendizaje para los usuarios.
+ *
+ *	Queda estrictamente prohibida la reproducción, distribución o utilización no autorizada de este contenido
+ *	sin el permiso expreso del autor, Set HM.
+ *
+ *	Para más información sobre el proyecto "Los Planetas" o para solicitar permisos de uso, por favor
+ *	comunicarse con Set HM a través del siguiente correo electrónico: [setghm@gmail.com]
+ */
+
+:root {
+	--text-color: var(--white-eight);
+	--white-one: rgba(255, 255, 255, 0.1);
+	--white-three: rgba(255, 255, 255, 0.3);
+	--white-five: rgba(255, 255, 255, 0.5);
+	--white-seven: rgba(255, 255, 255, 0.7);
+	--white-eight: rgba(255, 255, 255, 0.8);
+	--default-transition: all 0.1s ease-in;
+}
+
+@font-face {
+	font-family: Mulish;
+	src: url("assets/Mulish-VariableFont_wght.ttf");
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Mulish, sans-serif;
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+body {
+	color: var(--text-color);
+	background: url(textures/stars.jpg);
+	background-size: 500px;
+}
+
+h1.main {
+	text-shadow: 0px 0px 10px white;
+	letter-spacing: 3pt;
+}
+
+button {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.grab {
+	cursor: grab;
+}
+
+.grabbing {
+	cursor: grabbing;
+}
+
+canvas {
+	touch-action: none;
+	outline: none;
+}
+
+@keyframes background-move {
+	to {
+		background-position-x: 100%;
+	}
+}
+
+.routes {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10%;
+	padding: 20px 0;
+}
+
+.routes a {
+	text-decoration: none;
+	color: var(--text-color);
+	display: flex;
+	flex-direction: column;
+
+	padding-bottom: 2px;
+	border-bottom: 1px solid transparent;
+
+	transition: var(--default-transition);
+}
+
+.routes a:hover {
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+button.explore {
+	padding: 4px 16px;
+	background: none;
+	color: var(--text-color);
+
+	border: 1px solid white;
+	border-radius: 8px;
+
+	transition: var(--default-transition);
+
+	cursor: pointer;
+
+	text-shadow: 0 0 4px var(--white-three);
+	box-shadow: 0 0 4px var(--white-three), 0 0 8px var(--white-three) inset;
+}
+
+button.explore:hover {
+	text-shadow: 0 0 8px var(--white-five);
+	box-shadow: 0 0 8px var(--white-five), 0 0 8px var(--white-five) inset;
+}
+
+#explore {
+	padding: 12px 24px;
+	font-size: 12pt;
+	letter-spacing: 1pt;
+	backdrop-filter: blur(1px);
+
+	text-shadow: 0 0 8px var(--white-three);
+	box-shadow: 0 0 8px var(--white-three), 0 0 8px var(--white-three) inset;
+}
+
+button#explore:hover {
+	text-shadow: 0 0 12px var(--white-five);
+	box-shadow: 0 0 12px var(--white-five), 0 0 12px var(--white-five) inset;
+}
