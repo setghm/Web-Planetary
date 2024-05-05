@@ -1,8 +1,9 @@
-# <img src="favicon.ico" alt="" width="32px"> Planetary Web
+# <img src="favicon.ico" alt="" width="32px"> Web Planetary
 
-The web application is planned to be for teaching, but it is not yet 100% achieved for these reasons:
-- The content does not have sources of consultation, the information was not verified.
-- The information is not useful enough yet.
+> [!WARNING]
+> The web application is planned to be for teaching, but it is not yet 100% achieved for these reasons:
+> - The content does not have sources of consultation, the information was not verified.
+> - The information is not useful enough yet.
 
 ## Resources
 
